@@ -1,39 +1,46 @@
 import React from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
-
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import LoginScreen from "../screens/LoginScreen/LoginScreen";
+import SignupScreen from "../screens/SignupScreen/SignupScreen";
 import HomeScreen from "../screens/HomeScreen/HomeScreen";
+import { Background } from "@react-navigation/elements";
 
-type TabParamList = {
-  Home: undefined;
+export type RootStackParamList = {
+  Login: undefined;
+  Signup: undefined;
+  Home: undefined; // dette er din tab navigator
 };
 
-const Tab = createBottomTabNavigator<TabParamList>();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const RootNavigator: React.FC = () => {
+function RootNavigator() {
   return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName: keyof typeof Ionicons.glyphMap = "home";
-
-          if (route.name === "Home") {
-            iconName = focused ? "home" : "home-outline";
-          }
-
-          return <Ionicons name={iconName} size={size} color={color} />;
+    <Stack.Navigator initialRouteName="Login">
+      <Stack.Screen name="Login" component={LoginScreen} options={{
+        title: "Login",
+        headerStyle: {
+          backgroundColor: "blue"
         },
-        tabBarActiveTintColor: "#4285F4",
-        tabBarInactiveTintColor: "gray",
-        headerShown: true,
-      })}
-    >
-      <Tab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{ title: "Hello World" }}
-      />
-    </Tab.Navigator>
+        headerTintColor: "#fff",
+        headerTitleStyle: {
+          fontWeight: "bold"
+        },
+        headerTitleAlign: "center",
+      }}/>
+      <Stack.Screen name="Signup" component={SignupScreen} />
+      <Stack.Screen name="Home" component={HomeScreen} options={{
+        headerStyle: {
+          backgroundColor: "blue",
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        title: "ArcheryBuddy",
+        headerTitleAlign: "center",
+        headerBackVisible: false
+      }} />
+    </Stack.Navigator>
   );
 };
 
