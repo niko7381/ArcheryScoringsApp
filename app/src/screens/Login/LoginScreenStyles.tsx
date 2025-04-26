@@ -1,11 +1,14 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
+    Container: {
+        flex: 1
+    },
     Title: {
         fontSize: 28,
         fontWeight: "bold",
         marginBottom: 10,
-        marginTop: '40%',
+        marginTop: '10%',
         textAlign: "center",
     },
     Input: {
@@ -18,16 +21,11 @@ export default StyleSheet.create({
         borderRadius: 10,
         padding: 10,
     },
-    ButtonContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly', // eller 'space-between', 'center' alt efter look
-        padding: 10,
-    },
     LoginButtonContainer: {
-        flexDirection: 'row',
-        justifyContent: 'flex-end', // eller 'space-between', 'center' alt efter look
+        flexDirection: 'column',
+        justifyContent: 'space-evenly',
         padding: 10,
-        marginRight: 22
+        margin: 10
     },
     LoginButton: {
         display: 'flex',
@@ -37,6 +35,14 @@ export default StyleSheet.create({
         paddingLeft: 20,
         paddingRight: 20,
         borderRadius: 5,
+        margin: 10,
+        flexDirection: 'column',
+    },
+    ButtonContainer: {
+        flexDirection: 'column',
+        justifyContent: 'space-evenly',
+        padding: 10,
+        margin: 10
     },
     Buttons: {
         display: 'flex',
@@ -46,7 +52,8 @@ export default StyleSheet.create({
         paddingLeft: 20,
         paddingRight: 20,
         borderRadius: 5,
-        flexDirection: 'row',
+        margin: 10,
+        flexDirection: 'column',
     },
     ButtonText: {
         color: 'white',
