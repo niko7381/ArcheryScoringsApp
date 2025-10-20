@@ -50,3 +50,6 @@
 npx expo start -c --tunnel (Ngrok)
 
 # Structur.
+
+
+Hej :D
